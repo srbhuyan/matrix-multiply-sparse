@@ -9,8 +9,6 @@ typedef struct {
     int value;
 } SparseMatrix;
 
-#define SIZE 100
-
 // Create sparse matrix from user given matrix and return count of non-zero elements
 int createSparseMatrix(int rows, int cols, int matrix[rows][cols], SparseMatrix sparse[]) {
     int nz_count = 0;
@@ -81,7 +79,14 @@ int generateRandomSparseMatrix(int rows, int cols, int matrix[rows][cols], int n
 }
 
 // Generates two random *square* matrices of SIZE and creates an intermediate form to multiply them.
-int main() {
+int main(int argc, char * argv[]) {
+
+    if(argc < 2){
+      printf("Usage: main <SIZE>\n");
+      exit(0);
+    }
+
+    int SIZE = atoi(argv[1]);
 
     srand(time(0)); // seed
 
